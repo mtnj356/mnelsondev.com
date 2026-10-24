@@ -1,0 +1,97 @@
+/* Shared styles for mnelsondev.com */
+:root {
+  --bg: #fbfbfe;
+  --surface: #ffffff;
+  --fg: #1b1b1f;
+  --muted: #5d5e66;
+  --border: #e3e3ea;
+  --accent: #1e4fd8;
+  --accent-fg: #ffffff;
+  --accent-soft: #dce2ff;
+  --radius: 16px;
+  --max: 920px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131318;
+    --surface: #1d1d23;
+    --fg: #e4e1e6;
+    --muted: #a9aab4;
+    --border: #2f2f38;
+    --accent: #b6c4ff;
+    --accent-fg: #002780;
+    --accent-soft: #23305e;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+a { color: var(--accent); }
+img { max-width: 100%; height: auto; display: block; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+
+/* Header / footer */
+.site-header { border-bottom: 1px solid var(--border); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 1.1rem; color: var(--fg); text-decoration: none; }
+.brand img { width: 28px; height: 28px; }
+.site-nav { display: flex; gap: 20px; }
+.site-nav a { color: var(--muted); text-decoration: none; font-weight: 500; }
+.site-nav a:hover { color: var(--fg); }
+
+.site-footer { border-top: 1px solid var(--border); margin-top: 64px; padding: 24px 0 40px; color: var(--muted); font-size: 0.9rem; }
+.site-footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+/* Content */
+main { padding: 48px 0 0; }
+h1 { font-size: clamp(2rem, 6vw, 2.8rem); line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.02em; }
+h2 { font-size: 1.35rem; margin: 48px 0 12px; }
+.lede { font-size: 1.15rem; color: var(--muted); max-width: 40em; margin: 0; }
+
+/* App cards */
+.apps { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.app-card {
+  display: flex; gap: 16px; align-items: center;
+  padding: 20px; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); color: var(--fg); text-decoration: none;
+  transition: border-color .15s, transform .15s;
+}
+.app-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.app-card img { width: 64px; height: 64px; border-radius: 14px; flex: none; }
+.app-card h3 { margin: 0; font-size: 1.1rem; }
+.app-card p { margin: 2px 0 0; color: var(--muted); font-size: 0.95rem; line-height: 1.4; }
+
+/* App page */
+.app-hero { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.app-hero img { width: 112px; height: 112px; border-radius: 24px; flex: none; }
+.app-hero h1 { margin: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.button {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 22px; border-radius: 999px; font-weight: 600; text-decoration: none;
+  background: var(--accent); color: var(--accent-fg);
+}
+.button.secondary { background: var(--accent-soft); color: var(--fg); }
+.features { padding-left: 1.2em; }
+.features li { margin: 6px 0; }
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px; }
+.shots img { border-radius: 20px; border: 1px solid var(--border); }
+@media (max-width: 640px) {
+  .shots { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 70%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .shots img { scroll-snap-align: start; }
+}
+
+/* Long-form text (privacy policies) */
+.prose { max-width: 680px; }
+.prose h2 { font-size: 1.15rem; margin-top: 32px; }
+.prose .date { color: var(--muted); margin-top: 0; }
+code { font-size: 0.9em; background: var(--accent-soft); padding: 1px 6px; border-radius: 6px; }
